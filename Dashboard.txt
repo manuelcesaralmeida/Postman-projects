@@ -1,0 +1,72 @@
+describe('EDI API v1.3 Dashboard Tests', () => {
+  const testBaseUrl = Cypress.env('testBaseUrl');
+  const headers = {
+    accept: 'application/json',
+    Authorization: `Bearer ${Cypress.env('token')}`,
+    organizationId: Cypress.env('organizationId'),
+    username: Cypress.env('username'),
+  };
+
+  // Test 1: DashboardPieChartCount (isSent = true)
+  it('GET /api/v1.3/DashBoard/DashboardPieChartCount/{userId}/{year}/{month}/{isSent} - isSent = true', () => {
+    const userId = 'A7178F76-AA98-429B-A182-1F6EF3007CDE';
+    const year = 2024;
+    const month = 10;
+    const isSent = true;
+
+    cy.request({
+      method: 'GET',
+      url: `${testBaseUrl}/api/v1.3/DashBoard/DashboardPieChartCount/${userId}/${year}/${month}/${isSent}`,
+      headers,
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      // Add response assertions
+    });
+  });
+
+  // Test 2: DashboardPieChartCount (isSent = false)
+  it('GET /api/v1.3/DashBoard/DashboardPieChartCount/{userId}/{year}/{month}/{isSent} - isSent = false', () => {
+    const userId = 'A7178F76-AA98-429B-A182-1F6EF3007CDE';
+    const year = 2024;
+    const month = 10;
+    const isSent = false;
+
+    cy.request({
+      method: 'GET',
+      url: `${testBaseUrl}/api/v1.3/DashBoard/DashboardPieChartCount/${userId}/${year}/${month}/${isSent}`,
+      headers,
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      // Add response assertions
+    });
+  });
+
+  // Test 3: DashboardBarChartCount
+  it('GET /api/v1.3/DashBoard/DashboardBarChartCount/{userId}/{year}/{numberOfMonths}', () => {
+    const userId = 'A7178F76-AA98-429B-A182-1F6EF3007CDE';
+    const year = 2024;
+    const numberOfMonths = 12;
+
+    cy.request({
+      method: 'GET',
+      url: `${testBaseUrl}/api/v1.3/DashBoard/DashboardBarChartCount/${userId}/${year}/${numberOfMonths}`,
+      headers,
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      // Add response assertions
+    });
+  });
+
+  // Test 4: DashboardGettingStart
+  it('GET /api/v1.3/DashBoard/DashboardGettingStart', () => {
+    cy.request({
+      method: 'GET',
+      url: `${testBaseUrl}/api/v1.3/DashBoard/DashboardGettingStart`,
+      headers,
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      // Add response assertions
+    });
+  });
+});
+

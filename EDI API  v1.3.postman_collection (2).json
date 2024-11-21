@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "f1e873c5-a8ed-45ea-b179-057ef9d1b9a9",
+		"name": "EDI API  v1.3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29384387"
+	},
+	"item": [
+		{
+			"name": "TEST",
+			"item": [
+				{
+					"name": "Reports",
+					"item": [
+						{
+							"name": "Reports /api/v1.3/ReportsPdp/{year}/{month}",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "organizationId",
+										"value": "0dd4cad2-8f53-4f09-adb2-fcb3f2df6746",
+										"type": "text"
+									},
+									{
+										"key": "username",
+										"value": "calmeida@cegid.com",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{test}}/api/v1.3/ReportsPdp/2024/10",
+									"host": [
+										"{{test}}"
+									],
+									"path": [
+										"api",
+										"v1.3",
+										"ReportsPdp",
+										"2024",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reports /api/v1.3/ReportsExcelPdp/{year}/{month}",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true,
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "organizationId",
+										"value": "0dd4cad2-8f53-4f09-adb2-fcb3f2df6746",
+										"type": "text"
+									},
+									{
+										"key": "username",
+										"value": "calmeida@cegid.com",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{test}}/api/v1.3/ReportsExcelPdp/2024/10",
+									"host": [
+										"{{test}}"
+									],
+									"path": [
+										"api",
+										"v1.3",
+										"ReportsExcelPdp",
+										"2024",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

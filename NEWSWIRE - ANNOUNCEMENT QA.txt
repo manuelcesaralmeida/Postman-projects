@@ -1,0 +1,183 @@
+1. DEV create announcement
+
+describe('Announcement API Tests', () => {
+    it('DEV create announcement', () => {
+        cy.request({
+            method: 'POST',
+            url: 'https://email.api.dev.newswire-app.com/v1/announcements/28282/announcement',
+            headers: {
+                accept: '*/*',
+                'accept-language': 'en-US,en;q=0.9,pt;q=0.8',
+                authorization: '{{authToken}}',
+                'content-type': 'application/json',
+                identity: '{{identity}}',
+                origin: 'https://novabase.dev.newswire-app.com',
+                priority: 'u=1, i'
+            },
+            body: {
+                organizationId: 28282,
+                instrument: 'Announcement test',
+                type: 'type',
+                category: 1,
+                titleEn: 'Announcement test',
+                bodyEn: 'Announcement test',
+                titleSv: 'Announcement test',
+                bodySv: 'Announcement test',
+                regulated: false,
+                oslo: false,
+                nasdaq: false,
+                swedishRegulator: false,
+                status: 'DRAFT',
+                createdBy: 22,
+                active: true,
+                attachmentEn: [
+                    { id: 'testEn6.pdf', name: 'testEn6.pdf', size: '14835' }
+                ],
+                attachmentSv: [
+                    { id: 'testSv6.pdf', name: 'testSv6.pdf', size: '14835' }
+                ],
+                distributionLists: [{ id: 39 }]
+            }
+        }).then(response => {
+            expect(response.status).to.eq(201); // Adjust if expected status is different
+        });
+    });
+});
+
+
+
+
+----------------------------------------------------------------------------
+2. DEV update announcement
+
+it('DEV update announcement', () => {
+    cy.request({
+        method: 'PUT',
+        url: 'https://email.api.dev.newswire-app.com/v1/announcements/28282/announcement/886',
+        headers: {
+            accept: '*/*',
+            'accept-language': 'en-US,en;q=0.9,pt;q=0.8',
+            authorization: '{{authToken}}',
+            'content-type': 'application/json',
+            identity: '{{identity}}',
+            priority: 'u=1, i'
+        },
+        body: {
+            organizationId: 28282,
+            instrument: 'Announcement test',
+            type: 'type',
+            category: 1,
+            titleEn: 'Announcement test',
+            bodyEn: 'Announcement test',
+            titleSv: 'Announcement test',
+            bodySv: 'Announcement test',
+            regulated: false,
+            oslo: false,
+            nasdaq: false,
+            swedishRegulator: false,
+            status: 'PUBLISHED',
+            createdBy: 22,
+            updatedBy: 22,
+            active: true,
+            attachmentEn: [
+                { id: 'testEn6.pdf', name: 'testEn6.pdf', size: '14835' }
+            ],
+            attachmentSv: [
+                { id: 'testSv6.pdf', name: 'testSv6.pdf', size: '14835' }
+            ],
+            distributionLists: [{ id: 39 }]
+        }
+    }).then(response => {
+        expect(response.status).to.eq(200); // Adjust if expected status is different
+    });
+});
+
+
+
+
+
+----------------------------------------------------------------------------
+3. DEV list announcement
+
+it('DEV list announcement', () => {
+    cy.request({
+        method: 'GET',
+        url: 'https://email.api.dev.newswire-app.com/v1/announcements/28282/announcements',
+        qs: {
+            sortBy: 'CREATED_AT',
+            sortOrder: 'DESC',
+            statuses: 'PUBLISHED',
+            page: 1,
+            numberOfItems: 15
+        },
+        headers: {
+            accept: '*/*',
+            'accept-language': 'en-US,en;q=0.9,pt;q=0.8',
+            authorization: '{{authToken}}',
+            'content-type': 'application/json',
+            identity: '{{identity}}',
+            priority: 'u=1, i'
+        }
+    }).then(response => {
+        expect(response.status).to.eq(200);
+    });
+});
+
+
+
+
+
+----------------------------------------------------------------------------
+4. DEV get announcement
+
+it('DEV get announcement', () => {
+    cy.request({
+        method: 'GET',
+        url: 'https://email.api.dev.newswire-app.com/v1/announcements/28282/announcement/408',
+        headers: {
+            accept: '*/*',
+            'accept-language': 'en-US,en;q=0.9,pt;q=0.8',
+            authorization: '{{authToken}}',
+            'content-type': 'application/json',
+            identity: '{{identity}}',
+            priority: 'u=1, i'
+        }
+    }).then(response => {
+        expect(response.status).to.eq(200);
+    });
+});
+
+
+
+
+----------------------------------------------------------------------------
+
+5. DEV delete announcement
+
+it('DEV delete announcement', () => {
+    cy.request({
+        method: 'DELETE',
+        url: 'https://email.api.dev.newswire-app.com/v1/announcements/28282/announcement/408',
+        headers: {
+            accept: '*/*',
+            'accept-language': 'en-US,en;q=0.9,pt;q=0.8',
+            authorization: '{{authToken}}',
+            'content-type': 'application/json',
+            identity: '{{identity}}',
+            priority: 'u=1, i'
+        }
+    }).then(response => {
+        expect(response.status).to.eq(204); // Update if expected status is different
+    });
+});
+
+
+
+
+----------------------------------------------------------------------------
+
+
+
+
+
+----------------------------------------------------------------------------

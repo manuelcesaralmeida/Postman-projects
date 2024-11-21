@@ -1,0 +1,165 @@
+1. DEV associate org with user
+
+describe('ORGS API Tests', () => {
+    it('DEV associate org with user', () => {
+        cy.request({
+            method: 'POST',
+            url: 'https://iam.api.dev.newswire-app.com/v1/users/134/bulk/organizations',
+            headers: {
+                accept: '*/*',
+                'accept-language': 'en-US,en;q=0.9',
+                authorization: '{{authToken}}',
+                'content-type': 'application/json',
+                identity: '{{identity}}',
+                origin: 'https://novabase.dev.newswire-app.com',
+                priority: 'u=1, i',
+                'sec-ch-ua': '"Chromium";v="124", "Microsoft Edge";v="124", "Not-A.Brand";v="99"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-site',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0',
+            },
+            body: {
+                ids: [28282]
+            }
+        }).then(response => {
+            expect(response.status).to.eq(200); // Update if different
+        });
+    });
+});
+
+
+----------------------------------------------------------------------------
+2. DEV get org with API KEY
+
+describe('ORGS API Tests', () => {
+    it('DEV get org with API KEY', () => {
+        cy.request({
+            method: 'GET',
+            url: 'https://iam.api.dev.newswire-app.com/v1/organizations/30',
+            headers: {
+                accept: '*/*',
+                'accept-language': 'en-US,en;q=0.9',
+                'content-type': 'application/json',
+                'X-API-KEY': 'bf9e3fc4-32c5-4e64-962a-0461c71963cc',
+                priority: 'u=1, i',
+                'sec-ch-ua': '"Chromium";v="124", "Microsoft Edge";v="124", "Not-A.Brand";v="99"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-site',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0',
+            }
+        }).then(response => {
+            expect(response.status).to.eq(200);
+        });
+    });
+});
+
+----------------------------------------------------------------------------
+3. DEV create org
+
+describe('ORGS API Tests', () => {
+    it('DEV create org', () => {
+        cy.request({
+            method: 'POST',
+            url: 'https://iam.api.dev.newswire-app.com/v1/organizations',
+            headers: {
+                accept: '*/*',
+                'accept-language': 'en-US,en;q=0.9',
+                authorization: '{{authToken}}',
+                'content-type': 'application/json',
+                identity: '{{identity}}',
+                origin: 'https://novabase.dev.newswire-app.com',
+                priority: 'u=1, i',
+                'sec-ch-ua': '"Chromium";v="124", "Microsoft Edge";v="124", "Not-A.Brand";v="99"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-site',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0',
+            },
+            body: {
+                name: 'TesteDev5',
+                isin: 'AU3408017255',
+                lei: 'TesteDev5',
+                ticker: 'TesteDev5',
+                swedenRegId: '',
+                subdomain: 'testedev5'
+            }
+        }).then(response => {
+            expect(response.status).to.eq(201); // Adjust expected status code
+        });
+    });
+});
+
+
+
+----------------------------------------------------------------------------
+4. LOCAL get organizations
+
+describe('ORGS API Tests', () => {
+    it('LOCAL get organizations', () => {
+        cy.request({
+            method: 'GET',
+            url: 'http://localhost:8080/v1/organizations',
+            headers: {
+                accept: '*/*',
+                'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+                authorization: '{{authToken}}',
+                'content-type': 'application/json',
+                identity: '{{identity}}',
+                priority: 'u=1, i',
+                'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-site',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+            }
+        }).then(response => {
+            expect(response.status).to.eq(200);
+        });
+    });
+});
+
+----------------------------------------------------------------------------
+5. LOCAL get organizations Copy
+
+describe('ORGS API Tests', () => {
+    it('LOCAL get organizations Copy', () => {
+        cy.request({
+            method: 'GET',
+            url: 'https://iam.api.dev.newswire-app.com/v1/organizations/checkSub/novabase',
+            headers: {
+                accept: '*/*',
+                'accept-language': 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+                'content-type': 'application/json',
+                'X-API-KEY': 'bf9e3fc4-32c5-4e64-962a-0461c71963cc',
+                priority: 'u=1, i',
+                'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-site',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+            }
+        }).then(response => {
+            expect(response.status).to.eq(200);
+        });
+    });
+});
+
+
+----------------------------------------------------------------------------
+
+
+
+
+

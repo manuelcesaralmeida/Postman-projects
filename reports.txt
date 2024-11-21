@@ -1,0 +1,44 @@
+describe('EDI API v1.3 Report Tests', () => {
+  const testBaseUrl = Cypress.env('testBaseUrl');
+
+  // Test 1: GET /ReportsPdp/{year}/{month}
+  it('GET /api/v1.3/ReportsPdp/{year}/{month}', () => {
+    const year = 2024;
+    const month = 10;
+
+    cy.request({
+      method: 'GET',
+      url: `${testBaseUrl}/api/v1.3/ReportsPdp/${year}/${month}`,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${Cypress.env('token')}`,
+        organizationId: Cypress.env('organizationId'),
+        username: Cypress.env('username'),
+      },
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      // Add assertions for expected response structure or content if needed
+    });
+  });
+
+  // Test 2: GET /ReportsExcelPdp/{year}/{month}
+  it('GET /api/v1.3/ReportsExcelPdp/{year}/{month}', () => {
+    const year = 2024;
+    const month = 10;
+
+    cy.request({
+      method: 'GET',
+      url: `${testBaseUrl}/api/v1.3/ReportsExcelPdp/${year}/${month}`,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${Cypress.env('token')}`,
+        organizationId: Cypress.env('organizationId'),
+        username: Cypress.env('username'),
+      },
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      // Add assertions for expected response structure or content if needed
+    });
+  });
+});
+
